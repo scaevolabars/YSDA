@@ -1,0 +1,75 @@
+\usepackage{enumerate}
+
+%%%%% Theorem Styles %%%%
+\usepackage{amsthm}
+\newtheoremstyle{prbstyle}
+{10mm}                % Space above
+{5mm}                % Space below
+{\upshape}        % Theorem body font % (default is "\upshape")
+{}                % Indent amount
+{\bfseries}       % Theorem head font % (default is \mdseries)
+{.\newline}               % Punctuation after theorem head % default: no punctuation
+{5mm}               % Space after theorem head
+{}                % Theorem head spec
+
+\newtheoremstyle{excstyle}
+{5mm}                % Space above
+{10mm}                % Space below
+{\upshape}        % Theorem body font % (default is "\upshape")
+{}                % Indent amount
+{\bfseries}       % Theorem head font % (default is \mdseries)
+{.\newline}               % Punctuation after theorem head % default: no punctuation
+{10mm}               % Space after theorem head
+{}    
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newtheorem{mytheo}{Theorem}
+
+
+
+%%%% Theorem Enviroments %%%%
+\theoremstyle{prbstyle}
+\newtheorem{problem}{Задача}[section]
+\theoremstyle{excstyle}
+\newtheorem{exc}{Exercise}[section]
+\newtheorem{prop}{Proposition}[section]
+\newtheorem{solution}{Решение}[section]
+\newtheorem{thm}{Theorem}[section]
+\newtheorem{heur}{Heuristic}[section]
+
+%%%%%%%%Enviroments%%%%%%%%%
+\newenvironment{prb}
+{\begin{tcolorbox}
+	\begin{problem}}
+{
+\end{problem}
+\end{tcolorbox}
+\par\noindent\hrulefill}
+
+
+\newenvironment{sol}
+{\begin{solution}}
+	{\par\noindent\hrulefill
+\end{solution}}
+
+
+
+%%%%  New Commands%%%%
+\newcommand{\Probab}{\mathbb{P}}
+\newcommand{\Expec}[1]{\mathbb{E}\left[{#1}\right]}
+\newcommand*\diff[1]{\mathop{}\!\mathrm{d}{#1}}
+
+%%%%
+
+
+
+
+%%%%%%
+\DeclareMathOperator{\Tr}{Tr}
+\DeclareMathOperator{\rk}{rk}
+\DeclareMathOperator{\Img}{Im}
+\DeclareMathOperator{\Ker}{Ker}
+%If you want to change language for specific part 
+%\selectlanguage{russian}
+%%%%%%%
