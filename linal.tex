@@ -109,3 +109,56 @@ $x_1 = x_2 = x_3 = \frac{1}{\lambda + 2}$
 Решая систему получаем $\left(a_4, a_3, a_2, a_1\right) = \left(-1, 1, -2, 3\right)$
 \qed
 \end{sol}
+
+\begin{nb}
+
+\begin{gather*}
+    \left(
+    \begin{array}{cc}
+    1 & n \\
+    0 & 1
+    \end{array}
+    \right)
+    \cdot
+    \left(
+    \begin{array}{cc}
+    1 & m \\
+    0 & 1
+    \end{array}
+    \right) =
+    \left(
+    \begin{array}{cc}
+    1 & n + m \\
+    0 & 1
+    \end{array}
+    \right)
+\end{gather*}
+\end{nb}
+
+\begin{prb}
+Докажите, что $\left(E +  x E_{ij}\right)^k = E +  k x E_{ij}$ при $i \neq j$
+\end{prb}
+
+\begin{sol}
+Докажем по индукции:
+База индукции тривиальна
+
+Предположим, что $\left(E +  x E_{ij}\right)^n = E +  n x E_{ij}$
+
+Докажем, что $\left(E +  x E_{ij}\right)^{n + 1} = E +  (n + 1 )x E_{ij}$
+
+\begin{gather*}
+    \left(E +  x E_{ij}\right)^{n + 1} = \left(E +  x E_{ij}\right)^{n} \left(E +  x E_{ij}\right) = \left(E +  n x E_{ij}\right) \left(E +  x E_{ij}\right) = E + (n + 1) x E_{ij} + nx E_{ij}E_{ij} 
+\end{gather*}
+
+Слагаемое равно нулю если $i \neq j$ \qed
+
+\end{sol}
+
+\begin{prb}
+Доказать что $E_{ij}E_{pq} =  \delta_{ip} E_{jq}$
+\end{prb}
+
+\begin{sol}
+
+\end{sol}
