@@ -151,14 +151,88 @@ $x_1 = x_2 = x_3 = \frac{1}{\lambda + 2}$
     \left(E +  x E_{ij}\right)^{n + 1} = \left(E +  x E_{ij}\right)^{n} \left(E +  x E_{ij}\right) = \left(E +  n x E_{ij}\right) \left(E +  x E_{ij}\right) = E + (n + 1) x E_{ij} + nx E_{ij}E_{ij} 
 \end{gather*}
 
-Слагаемое равно нулю если $i \neq j$ \qed
+Слагаемое $nx E_{ij}E_{ij}$ равно нулю если $i \neq j$ \qed
 
 \end{sol}
 
 \begin{prb}
-Доказать что $E_{ij}E_{pq} =  \delta_{ip} E_{jq}$
+Доказать что $E_{ij}E_{pq} =  \delta_{jp} E_{iq}$
 \end{prb}
 
 \begin{sol}
+Прямым вычислением можно убедиться, что 
 
+   \begin{align*}
+        E_{ij}E_{pq}=\left\{
+        \begin{array}{ll}
+        E_{iq} & j = p\\
+        0 & j\neq p
+        \end{array}\right.
+        = \delta_{jp}E_{iq}
+    \end{align*} 
+   
+\end{sol}
+
+\begin{prb}
+Опишите множество матриц коммутирующих со всеми матрицами
+\end{prb}
+
+\begin{sol}
+\begin{gather*}
+    E_{ij}E_{pq} =  \delta_{jp} E_{iq}\\
+    \mbox{Разложим произвольную матрицу по стандартному базису единичных матриц}\\
+    A = \sum_{1 \leq i,j \leq n} a_{ij} E_{ij}\\
+    A E_{pq} = E_{pq} A  \leftrightarrow \sum_{i,j} a_{ij} E_{ij}E_{pq} = \sum_{i,j} a_{ij} E_{pq} E_{ij} 
+    \leftrightarrow  \sum_{i,j} a_{ij} \delta_{jp} E_{iq} = \sum_{i,j} a_{ij} \delta_{qi} E_{pj} \leftrightarrow \sum_{i} a_{ip} E_{iq} = \sum_{j} a_{jp} E_{pj} \\
+    \implies
+    a_{pp} = a_{qq}  = \lambda \, \forall p,q \quad
+    a_{ip} \, \forall i,p \, i\neq p
+\end{gather*}
+\end{sol}
+
+
+\begin{prb}
+Будем называть централизатором матрицы множество всех матриц, коммутирующих с данной. Найдите централизатор жордановой клетки $J(\lambda)$
+\end{prb}
+
+\begin{sol}
+\begin{gather*}
+    \mbox{Распишем условие коммутации матрицы} A \mbox{c жордановой клеткой.} \\
+    A J(\lambda) = J(\lambda) A
+\end{gather*}
+
+\begin{gather*}
+    J(\lambda) = \lambda E + J_{0} \\
+    A (\lambda E + J_{0}) = (\lambda E + J_{0}) A 
+    \mbox{ где } J_{0} = \left(\begin{array}{ccccc}
+       0 & 1 & 0 & \cdots & 0\\
+       0 & 0 & 1 & & 0 \\
+       0 & 0 & 0 & 1& 0\\
+       0 & & \ddots & 0 &1\\
+       0 & 0 & \cdots & 0 & 0
+    \end{array}\right)
+\end{gather*}
+
+\begin{gather*}
+     A (\lambda E + J_{0}) = (\lambda E + J_{0}) A  \implies A + A J_{0} =
+     J_{0}A + A \implies A J_{0} = J_{0} A 
+\end{gather*}
+То есть достаточно коммутации матрицы с $J_{0}$
+
+Умножение слева на $J_{0}$ сдвигает матрицу на одну строчка вверх,
+а умножение справа сдвигает на одну колонку вправо.
+
+
+Проделав вычисления можно убедиться, что матрица $A$ должна быть одновременно вверхнетреугольной и матрицей Тёплица (Toeplitz) вида
+
+\begin{gather*}
+A = \begin{pmatrix}
+a & b & c & \dots & A_n \\
+  0 & a & b  & \dots & A_{n-1} \\
+  0 & 0 & a  & \dots & A_{n-2} \\
+\vdots & \vdots & \vdots & \ddots & \vdots \\
+0 & 0 & 0 & 0 &\dots a \\
+\end{pmatrix}
+\end{gather*}
+Полезно также отметить, что такая матрица является многочленом от $J(\lambda)$
 \end{sol}
