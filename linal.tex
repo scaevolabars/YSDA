@@ -236,3 +236,131 @@ a & b & c & \dots & A_n \\
 \end{gather*}
 Полезно также отметить, что такая матрица является многочленом от $J(\lambda)$
 \end{sol}
+
+\begin{prb}
+Посчитать $J(\lambda)^k$
+\end{prb}
+
+\begin{sol}
+    \begin{gather*}
+        J(\lambda)^k = (\lambda E + J_0)^k \\
+        J_{0} \mbox{это нильпотентная матрица порядка $n$}
+    \end{gather*}
+    Так как $\left[\lambda E, J_0\right] = 0$
+    можно использовать формулу бинома для матриц.
+    $$
+    \left(A + B \right)^{n} = \sum_{k=0}^nC_n^kA^kB^{n-k} 
+    $$
+    
+    \begin{gather*}
+     \left(\lambda E + J_0 \right)^{n} = \sum_{r=0}^{n} {{n}\choose{r}}\lambda^k J_{0}^{n-r}   =
+    \end{gather*}
+    
+    \begin{gather*}
+        J_k(\lambda)^n = \begin{pmatrix}
+        \binom{n}{0}\lambda^n & \binom{n}{1}\lambda^{n-1} & \binom{n}{2}\lambda^{n-2} & \cdots & \cdots & \binom{n}{k-1}\lambda^{n-k+1} \\
+         & \binom{n}{0}\lambda^n & \binom{n}{1}\lambda^{n-1} & \cdots & \cdots & \binom{n}{k-2}\lambda^{n-k+2} \\
+         &  & \ddots & \ddots & \vdots & \vdots\\
+         &  & & \ddots & \ddots & \vdots\\
+         &  & &  & \binom{n}{0}\lambda^n & \binom{n}{1}\lambda^{n-1}\\
+         &  &  &  &  & \binom{n}{0}\lambda^n
+        \end{pmatrix}.
+    \end{gather*}
+\end{sol}
+
+\begin{prb}
+Пусть — квадратная нильпотентная матрица. Докажите, что матрицы $E + A$
+и $E - A$ обратимы.
+\end{prb}
+
+\begin{sol}
+    \begin{enumerate}
+        \item[Решение 1]
+        
+            \begin{gather*}
+                \left(E - A\right)^{-1} = \sum_{k = 0}^{\infty} A^{k} \\
+                \left(E + A\right)^{-1} = \sum_{k = 0}^{\infty} (-1)^k A^{k}
+            \end{gather*}
+            Так как ряд матрица $A$ нильпотентна  этот формальный ряд обрывается на члене со степенью $n - 1$ где $n$ индекс нильпотентности.
+            
+            По построению такие ряды при умножение на $\left(E - A\right)$
+            и $ \left(E + A\right)$ дают единичную матрицу.
+            
+        \item[Решение 2]
+            Попробуем следующий трюк
+            \begin{gather*}
+                \left(E - A\right) \dot \left(E + A\right) \dot \left(E + A^2\right) \dots 
+            \end{gather*}
+            Очевидно что в какой-то итерации получится выражение вида $E -  A^k$ и где $k > n$
+            Тогда получается, что 
+            \begin{gather*}
+                \left(E - A\right) \left[ \dots \right] = E -  A^k = E
+            \end{gather*}
+             Значит выражение в обратных скобках является обратной матрицей для $\left(E - A\right)$
+    \end{enumerate}
+\end{sol}
+
+\begin{prb}
+Пусть $A$ - нильпотентная матрица. Решите матричное уравнения
+\begin{gather*}
+    AX + X + A = 0
+\end{gather*}
+\end{prb}
+
+\begin{sol}
+    \begin{gather*}
+         AX + X + A = 0 \\
+        \left(A + E\right)X = -A \\
+        X = - \left(A + E\right)^-1 A \\
+        X = \sum_{k = 0}^{n - 1} (-1)^k A^{k} \cdot A = \sum_{k = 0}^{n - 2} (-1)^k A^{k + 1}
+    \end{gather*}
+\end{sol}
+
+\begin{prb}
+     Пусть $A$ — матрица порядка 2 с нулевым следом. Найдите централизатор
+    матрицы $A^2$
+\end{prb}
+
+\begin{sol}
+    \begin{gather*}
+        \left[A^2, X\right] = 0
+    \end{gather*}
+    \begin{gather*}
+    \mbox{Пусть } A = \left(\begin{array}{cc}
+                a & b \\
+                c & d
+               \end{array}
+               \right)
+    \mbox{ Тогдa } A^2 = \left(
+            \begin{array}{cc}
+             a^2+b c & a b+b d \\
+             a c+c d & b c+d^2 \\
+            \end{array}
+            \right)\\
+    \mbox{При условии} \Tr A = 0   \\  
+        A = \left(
+            \begin{array}{cc}
+             a^2+b c & 0 \\
+             0 & b c+a^2 \\
+            \end{array}
+            \right) = (b c+a^2) E
+    \end{gather*}
+    Значит квадрат бесследовой матрицы пропорционален единичной.
+    Так как с единичной матрицей коммутирует любая матрица из этого следует, что $X$ - произвольная матрица
+\end{sol}
+
+
+\begin{prb}
+Определим коммутатор матриц $\left[A,B\right] = AB - BA$  . Докажите, что для любых матриц порядка 2 выполняется равенство
+$\left[\left[A,B\right]^2,C\right] = 0$ 
+\end{prb}
+
+\begin{sol}
+    Посчитаем $\Tr \left[A,B\right] = \Tr AB - \Tr BA  = 0$\\
+    Значит любой коммутатор матриц $2 \times 2$ бесследовый, а значит его квадрат пропорционален единичной матриц. В предыдущей задачи мы доказали, что $C$ при таких условиях может быть произвольной.
+\end{sol}
+
+\begin{prb}
+Докажите, что если матрица $A$ нильпотентна, а многочлен $f(x)$ имеет нену-
+левой свободный член, то матрица $f(A)$ обратима.
+\end{prb}
