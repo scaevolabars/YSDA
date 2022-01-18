@@ -364,3 +364,103 @@ $\left[\left[A,B\right]^2,C\right] = 0$
 Докажите, что если матрица $A$ нильпотентна, а многочлен $f(x)$ имеет нену-
 левой свободный член, то матрица $f(A)$ обратима.
 \end{prb}
+
+\begin{prb}
+Даны матрицы $A \in M_n(\mathbb{R})$, $B \in M_{nm}(\mathbb{R})$, $C \in M_{mn}(\mathbb{R})$ $D \in M_{m}(\mathbb{R})$ 
+\begin{enumerate}
+    \item Докажите, что если матрица $A$ обратима, то определитель блочной матрицы
+    \begin{gather*}
+    \det \left(
+        \begin{array}{cc}
+           A &  B \\
+           C &  D
+        \end{array}\right) = \det (A) \det (D -  C A^{-1} B)
+    \end{gather*}
+    
+    \item  Докажите, что если $n = m$ , $\left[A,C\right] = 0$
+        \begin{gather*}
+            \det \left(
+                \begin{array}{cc}
+                   A &  B \\
+                   C &  D
+                \end{array}\right) 
+                = \det (AD - BC)
+        \end{gather*}
+        
+\end{enumerate}
+\end{prb}
+
+
+\begin{sol}
+    Для решения задачи нам понадобится несколько полезных утверждений
+    Во-первых к блочными матрицам можно применять элементарные преобразования
+    строк и столбцов
+    
+    \begin{gather*}
+        \left(
+        \begin{array}{cc}
+           A &  B \\
+           C &  D
+        \end{array}\right) \rightarrow \left(
+        \begin{array}{cc}
+           A &  B \\
+           C + RA &  D +RB
+        \end{array}\right)
+    \end{gather*}
+    Что эквивалентно умножению слева на матрицу
+    \begin{gather*}
+        \left(
+        \begin{array}{cc}
+               E &  0 \\
+               R &  E
+        \end{array}\right)
+        \left(
+        \begin{array}{cc}
+           A &  B \\
+           C &  D 
+        \end{array}\right)
+        =\left(
+        \begin{array}{cc}
+           A &  B \\
+           C + RA &  D +RB
+        \end{array}\right)
+    \end{gather*}
+    
+    Подберем $R$ так чтоб занулить нижний левый угол
+    $C +  RA = 0 \implies R = -C A^{-1}$
+    
+    \begin{gather*}
+        \left(
+        \begin{array}{cc}
+           A &  B \\
+           C &  D 
+        \end{array}\right) \rightarrow 
+         \left(
+        \begin{array}{cc}
+           A &  B \\
+           0 &  D - C A^{-1}B
+        \end{array}\right)
+    \end{gather*}
+    
+    \begin{gather*}
+        \det \left(
+        \begin{array}{cc}
+           A &  B \\
+           C &  D 
+        \end{array}\right) =
+        \det
+         \left(
+        \begin{array}{cc}
+           A &  B \\
+           0 &  D - C A^{-1}B
+        \end{array}\right) = \det (A) \det (D +  C A^{-1} B)
+    \end{gather*}
+    Здесь мы воспользовались свойством
+    \begin{gather*}
+        \det \left(
+        \begin{array}{cc}
+           X &  Y \\
+           0 &  Z 
+        \end{array}\right) = \det X \cdot \det Z
+    \end{gather*}
+\end{sol}
