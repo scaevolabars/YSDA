@@ -464,3 +464,186 @@ $\left[\left[A,B\right]^2,C\right] = 0$
         \end{array}\right) = \det X \cdot \det Z
     \end{gather*}
 \end{sol}
+
+\begin{prb}
+Вычислите детерминант матрицы
+    \begin{gather*}
+        \left(
+        \begin{array}{ccccc}
+           a_{1} + x & x & x & \cdots & x\\
+           x  &  a_{2} + x & x & \cdots & x\\
+           \vdots & \vdots & \ddots& \vdots & \vdots\\
+           x & \cdots & \cdots & \cdots & a_{n} + x
+        \end{array}
+        \right)
+    \end{gather*}
+\end{prb}
+
+\begin{sol}
+    Для решения этой задачи будет полезно решить её в более общей постановке
+    Матрицу $M$ можно представить в следующем виде:
+    \begin{gather*}
+        M =  D + x u u^{T}
+    \end{gather*} где 
+    $u, v$ - вектора, $D$ - обратимая матрица
+    
+    \begin{gather*}
+        \det M = \det\left(D +  u v^{T}\right) = \det D \det (E + D^{-1} u u^{T})
+    \end{gather*}
+    Перепишем второй множитель в виде следующей блочной матрицы
+    \begin{gather*}
+        \left(
+        \begin{array}{cc}
+            E +  u v^{T} &  0\\
+           0  & 1
+        \end{array}
+        \right)
+        и проведем её к треугольному виду с помощью матриц элементарных преобразований
+    \end{gather*}
+    
+    \begin{gather*}
+    \left(
+        \begin{array}{cc}
+            E +  u v^{T} &  0\\
+           0  & 1
+        \end{array}
+        \right) \rightarrow  
+        \left(
+        \begin{array}{cc}
+            E +  u v^{T} &  0\\
+           0  & 1
+        \end{array}
+        \right)
+        \left(
+        \begin{array}{cc}
+            E &  0\\
+           -v^{T}  & 1
+        \end{array}
+        \right) = \left(
+        \begin{array}{cc}
+            E +  u v^{T} &  0\\
+           -v^T  & 1
+        \end{array}
+        \right) \\
+        \left(
+         \begin{array}{cc}
+            E +  u v^{T} &  0\\
+           -v^T  & 1
+        \end{array}\right) \rightarrow
+        \left(
+         \begin{array}{cc}
+            E  &  u\\
+           0  & 1
+        \end{array}
+        \right)
+        \left(
+         \begin{array}{cc}
+            E +  u v^{T} &  0\\
+           -v^T  & 1
+        \end{array}
+        \right) =
+        \left(
+         \begin{array}{cc}
+            E &  u\\
+           -v^T  & 1
+        \end{array}
+        \right) \\ 
+        \left(
+         \begin{array}{cc}
+            E &  u\\
+           -v^T  & 1
+        \end{array}
+        \right) \rightarrow
+        =
+        \left(
+         \begin{array}{cc}
+            E &  0\\
+           v^T  & 1
+        \end{array}
+        \right) 
+        \left(
+         \begin{array}{cc}
+            E &  u\\
+           -v^T  & 1
+        \end{array}
+        \right) = 
+        \left(
+         \begin{array}{cc}
+            E &  u\\
+           0  & 1 + v^T u
+        \end{array}
+        \right)
+    \end{gather*}
+    
+    Сделаем теперь переход к случаю когда $D$ не единичная
+    для этого просто заменим $u \rightarrow D^{-1} u$
+    
+    Получим
+    \begin{gather}
+        \left(
+         \begin{array}{cc}
+            E &  u\\
+           0  & 1 + v^T D^{-1} u
+        \end{array}
+        \right)
+    \end{gather}
+    
+    Определитель этой матрицы равен $1 + v^T D^{-1} u$
+    Значит определитель итоговой матрицы равен $(1 + v^T D^{-1} u )\det D$
+    
+    
+    В нашем конкретном случае, где $u = v  =  \left(1,1\dots,1,1\right)$ a $D = \operatorname{diag}(a_1, a_2 \dots, a_n)$
+    \begin{gather*}
+        \det M = \prod_{i}^n a_{i} \cdot \left[1 + \sum_{k}^n \frac{x}{a_k}\right]
+    \end{gather*}
+\end{sol}
+
+\begin{prb}
+    Вычислите детерминант матрицы
+    \begin{gather*}
+        \left(
+        \begin{array}{ccccc}
+           a_{1} + x &  a_{2} &  a_{3} & \cdots & x\\
+           a_{1}  &  a_{2} + x & x & \cdots & x\\
+           \vdots & \vdots & \ddots& \vdots & \vdots\\
+           a_{1} & \cdots & \cdots & \cdots & a_{n} + x
+        \end{array}
+        \right)
+    \end{gather*}
+\end{prb}
+
+\begin{sol}
+    \begin{gather*}
+        \det M =  \det (x E +  b a^{T}) = x^n \det\left(E +  \frac{ba^{T}}{x}\right)
+    \end{gather*}
+    По формуле из предыдущей задачи получаем,что
+    \begin{gather*}
+        \det M = x^n \left(1+ \frac{1}{x}\sum_{i}^{n} a_{i}\right)
+    \end{gather*}
+\end{sol}
+    
+    
+\begin{prb}
+    Вычислите детерминант матрицы
+    \begin{gather*}
+        \left(
+        \begin{array}{ccccc}
+            1 + x_{1} y_{1} &  x_{1} y_{2} & \cdots & \cdots &x_{1} y_{n}\\
+           x_{2} y_{1}  &   1 + x_{1} y_{} & x_{2} y_{3} & \cdots & x_{2} y_{n}\\
+           \vdots & \vdots & \ddots& \vdots & \vdots\\
+           x_{n} y_{1} & \cdots & \cdots & \cdots & 1 + x_{n} y_{n}
+        \end{array}
+        \right)
+    \end{gather*}
+\end{prb}
+
+\begin{sol}
+    \begin{gather*}
+        \det M =  \det (E +  x y^{T}) = 
+    \end{gather*}
+    По формуле из предыдущей задачи получаем,что
+    \begin{gather*}
+        \det M = \left(1+ \sum_{i}^{n} x_{i} y_{i}\right)
+    \end{gather*}
+\end{sol}    
+    
